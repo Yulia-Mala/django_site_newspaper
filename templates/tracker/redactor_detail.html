@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <div class="mx-auto w-75 p-3">
+    <h3>{{ redactor.username }}
+      {% if redactor.first_name and redactor.last_name %}
+        /{{ redactor.first_name }} {{ redactor.last_name }}/
+        {% endif %}
+      {% if user == redactor %} (me)
+      {% endif %}</h3>
+    <br>
+    {% if redactor.newspapers.all %}
+      <h6>Newspapers:</h6>
+      <ul>
+      {% for paper in redactor.newspapers.all %}
+        <li>
+          <a href="#">{{ paper.title}}</a>
+{#          {% if paper.publish_date %}#}
+{#          Date:{{ paper.publish_date|date:"D d M Y" }}#}
+{#          {% endif %}#}
+        </li>
+      {% endfor %}
+      </ul>
+    {% else %}
+      {% if user == redactor %}
+        <p>There are no newspapers with such a topic </p>
+        <br>
+        <p>Would you like to create some? ;)</p>
+      {% endif %}
+    {% endif %}
+  </div>
+{% endblock %}

@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <div class="mx-auto w-75 p-3">
+      <table class="table ">
+        <tr class="thead-light">
+          <th>ID</th>
+          <th>Username</th>
+          <th>Number of newspapers</th>
+        </tr>
+      {% for redactor in redactor_list %}
+        <tr>
+          <td>{{ redactor.id }}</td>
+          <td><h5>
+            {{ redactor.username }}
+            {% if redactor.first_name and redactor.last_name %}
+            /{{ redactor.first_name }} {{ redactor.last_name }}/
+            {% endif %}
+            {% if user == redactor %} (me)
+            {% endif %}
+          </h5></td>
+          <td>{{ redactor.newspapers.count }}</td>
+        </tr>
+      {% endfor %}
+      </table>
+    </div>
+{% endblock %}
+
