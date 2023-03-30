@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+{% load crispy_forms_filters %}
+
+{% block content %}
+  <div class="mx-auto w-75 p-3">
+     <form action="" method="get">
+      {{ search_form|crispy }}
+     </form>
+    {% if topic_list %}
+      <div class="container d-flex justify-content-end">
+        <h3><a class="btn-lg" href="{% url "tracker:topic-create" %}">Add topic</a></h3>
+      </div>
+      <table class="table ">
+        <tr class="thead-light">
+          <th>ID</th>
+          <th>Topic</th>
+          <th>Number of newspapers</th>
+        </tr>
+      {% for topic in topic_list %}
+        <tr>
+          <td>{{ topic.id }}</td>
+          <td><h5><a href="{% url "tracker:topic-detail" pk=topic.id %}">{{ topic.name }}</a></h5></td>
+          <td>{{ topic.newspapers.count }}</td>
+        </tr>
+      {% endfor %}
+      </table>
+    </div>
+  {% else %}
+    <br>
+    <p>There are no topics at the moment </p>
+    <br>
+    <p>Would you like to create some? ;)</p>
+  {% endif %}
+{% endblock %}
