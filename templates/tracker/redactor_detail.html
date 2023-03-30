@@ -8,7 +8,6 @@
       {% endif %}
     </h3>
     <a class="btn-lg" href="{% url "tracker:redactor-update" pk=redactor.id%}">Update</a>
-    <a class="btn-lg" style="color:red;" href="{% url "tracker:redactor-update" pk=redactor.id%}">Delete</a>
 
     <p><h6>
       {% if redactor.first_name and redactor.last_name %}
