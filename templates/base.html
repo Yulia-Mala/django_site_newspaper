@@ -21,10 +21,11 @@
 
       {% block content %}
       {% endblock %}
-
-{#      {% block pagination %}#}
-{#        {% include "includes/pagination.html" %}#}
-{#      {% endblock %}#}
+      <div class="mx-auto w-75 p-3">
+      {% block pagination %}
+        {% include "includes/pagination.html" %}
+      {% endblock %}
+      </div>
 
 </body>
 

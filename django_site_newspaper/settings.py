@@ -131,3 +131,9 @@ AUTH_USER_MODEL = "tracker.Redactor"
 LOGIN_REDIRECT_URL = "/"
 
 CRISPY_TEMPLATE_PACK = "bootstrap4"
+
+STATICFILES_DIRS = [
+    BASE_DIR / "static",
+]
+
+STATIC_ROOT = BASE_DIR / "staticfiles"

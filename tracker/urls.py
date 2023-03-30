@@ -1,4 +1,5 @@
 from django.urls import path
+from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 
 from tracker.views import index, TopicListView, TopicDetailView, RedactorListView, RedactorDetailView, \
     NewspaperListView, NewspaperDetailView, TopicCreateView, NewspaperCreateView, TopicUpdateView, NewspaperUpdateView, \
@@ -77,5 +78,7 @@ urlpatterns = [
         name="redactor-update"
     ),
 ]
+
+urlpatterns += staticfiles_urlpatterns()
 
 app_name = "tracker"

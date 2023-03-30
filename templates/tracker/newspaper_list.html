@@ -1,7 +1,11 @@
 {% extends "base.html" %}
+{% load crispy_forms_filters %}
 
 {% block content %}
   <div class="mx-auto w-75 p-3">
+   <form action="" method="get">
+    {{ search_form|crispy }}
+   </form>
   <div class="container d-flex justify-content-end">
   <h3><a class="btn-lg" href="{% url "tracker:newspaper-create" %}">Add newspaper</a></h3>
   </div>
