@@ -1,21 +1,22 @@
 {% extends "base.html" %}
 
 {% block content %}
-  {% if topic_list %}
-    <div class="mx-auto w-75 p-3">
+  <div class="mx-auto w-75 p-3">
+    {% if topic_list %}
+      <div class="container d-flex justify-content-end">
+        <h3><a class="btn-lg" href="{% url "tracker:topic-create" %}">Add topic</a></h3>
+      </div>
       <table class="table ">
         <tr class="thead-light">
           <th>ID</th>
           <th>Topic</th>
-          <th></th>
-          <th></th>
+          <th>Number of newspapers</th>
         </tr>
       {% for topic in topic_list %}
         <tr>
           <td>{{ topic.id }}</td>
-          <td><h5>{{ topic.name }}</h5></td>
-          <td><a href="#">Update</a></td>
-          <td>Delete</td>
+          <td><h5><a href="{% url "tracker:topic-detail" pk=topic.id %}">{{ topic.name }}</a></h5></td>
+          <td>{{ topic.newspapers.count }}</td>
         </tr>
       {% endfor %}
       </table>

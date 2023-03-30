@@ -1,6 +1,7 @@
 from django.contrib.auth.models import AbstractUser
 from django.db import models
 
+
 from django_site_newspaper.settings import AUTH_USER_MODEL
 
 
@@ -12,7 +13,7 @@ class Topic(models.Model):
 
 
 class Redactor(AbstractUser):
-    years_of_experience = models.IntegerField(null=True)
+    years_of_experience = models.IntegerField(null=True, blank=True)
 
     def __str__(self):
         return self.username
@@ -21,7 +22,7 @@ class Redactor(AbstractUser):
 class Newspaper(models.Model):
     title = models.CharField(max_length=63, unique=True)
     content = models.TextField()
-    publish_date = models.DateTimeField()
+    publish_date = models.DateField()
     topic = models.ManyToManyField(Topic, related_name="newspapers")
     publishers = models.ManyToManyField(AUTH_USER_MODEL, related_name="newspapers")
 

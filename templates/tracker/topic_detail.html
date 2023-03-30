@@ -2,24 +2,26 @@
 
 {% block content %}
   <div class="mx-auto w-75 p-3">
-    <h3>{{ topic.name }}</h3>
+    <h3>Topic: {{ topic.name }}</h3>
+    <a class="btn-lg" href="{% url "tracker:topic-update" pk=topic.id%}">Update</a>
+    <a class="btn-lg" style="color:red;" href="{% url "tracker:topic-delete" pk=topic.id%}">Delete</a>
+    <br>
     <br>
     {% if topic.newspapers.all %}
       <h6>Newspapers:</h6>
       <ul>
       {% for paper in topic.newspapers.all %}
         <li>
-          <a href="#">{{ paper.title}}</a>
-{#          {% if paper.publish_date %}#}
-{#          Date:{{ paper.publish_date|date:"D d M Y" }}#}
-{#          {% endif %}#}
+          <a href="{% url "tracker:newspaper-detail" pk=paper.id %}">{{ paper.title}}</a>
+          {% if paper.publish_date %}
+          <h6>{{ paper.publish_date }}</h6>
+          {% endif %}
         </li>
       {% endfor %}
       </ul>
     {% else %}
       <p>There are no newspapers with such a topic </p>
-      <br>
-      <p>Would you like to create some? ;)</p>
+      <p>Would you like to <a href="{% url "tracker:newspaper-create" %}">create</a> some? ;)</p>
     {% endif %}
   </div>
 {% endblock %}
