@@ -1,7 +1,7 @@
 from django.contrib.auth import get_user_model
 from django.contrib.auth.forms import UserCreationForm
 from django import forms
-
+from django.core.exceptions import ValidationError
 from tracker.models import Redactor, Newspaper, Topic
 
 
@@ -9,6 +9,14 @@ class RedactorForm(UserCreationForm):
     class Meta(UserCreationForm.Meta):
         model = Redactor
         fields = UserCreationForm.Meta.fields + ("first_name", "last_name", "years_of_experience")
+
+    def clean_years_of_experience(self):
+        years_of_experience = self.cleaned_data["years_of_experience"]
+        if years_of_experience < 0:
+            raise ValidationError(
+                f"Years of experience cannot be less than zero ;)"
+            )
+        return years_of_experience
 
 
 class NewspaperForm(forms.ModelForm):

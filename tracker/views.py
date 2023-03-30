@@ -15,7 +15,7 @@ def index(request):
     return render(request, "tracker/index.html", context=context)
 
 
-class TopicListView(LoginRequiredMixin, generic.ListView):
+class TopicListView(generic.ListView):
     model = Topic
 
     def get_context_data(self, *, object_list=None, **kwargs):
@@ -33,11 +33,11 @@ class TopicListView(LoginRequiredMixin, generic.ListView):
         return queryset
 
 
-class TopicDetailView(LoginRequiredMixin, generic.DetailView):
+class TopicDetailView(generic.DetailView):
     model = Topic
 
 
-class RedactorListView(LoginRequiredMixin, generic.ListView):
+class RedactorListView( generic.ListView):
     model = Redactor
 
     def get_context_data(self, *, object_list=None, **kwargs):
@@ -55,11 +55,11 @@ class RedactorListView(LoginRequiredMixin, generic.ListView):
         return queryset
 
 
-class RedactorDetailView(LoginRequiredMixin, generic.DetailView):
+class RedactorDetailView( generic.DetailView):
     model = Redactor
 
 
-class NewspaperListView(LoginRequiredMixin, generic.ListView):
+class NewspaperListView( generic.ListView):
     model = Newspaper
     paginate_by = 6
 
@@ -78,7 +78,7 @@ class NewspaperListView(LoginRequiredMixin, generic.ListView):
         return queryset
 
 
-class NewspaperDetailView(LoginRequiredMixin, generic.DetailView):
+class NewspaperDetailView( generic.DetailView):
     model = Newspaper
 
 
@@ -113,7 +113,7 @@ class NewspaperCreateView(LoginRequiredMixin, generic.CreateView):
 
 class NewspaperUpdateView(LoginRequiredMixin, generic.UpdateView):
     model = Newspaper
-    fields = "__all__"
+    form_class = NewspaperForm
 
     def get_success_url(self):
         return reverse("tracker:newspaper-detail", kwargs={"pk": self.object.pk})
@@ -138,3 +138,5 @@ class RedactorUpdateView(LoginRequiredMixin, generic.UpdateView):
 
     def get_success_url(self):
         return reverse("tracker:redactor-detail", kwargs={"pk": self.object.pk})
+
+
