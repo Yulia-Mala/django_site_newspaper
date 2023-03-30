@@ -3,18 +3,18 @@
 {% block content %}
 <div class="mx-auto w-75 p-3">
 
-<h3>Login</h3>
+  <h3>Login</h3>
 
-{% if next %}
-  <p>Please login to see this page.</p>
-{% endif %}
+  {% if next %}
+    <p>Please login to see this page.</p>
+  {% endif %}
 
-<form method="post" action="{% url 'login' %}">
-{% csrf_token %}
-{{ form.as_p}}
+  <form method="post" action="{% url 'login' %}">
+  {% csrf_token %}
+  {{ form.as_p}}
 
-<input type="submit" value="Login" class="btn btn-primary" />
-<input type="hidden" name="next" value="{{ next }}" />
-</form>
+  <input type="submit" value="Login" class="btn btn-primary" />
+  <input type="hidden" name="next" value="{{ next }}" />
+  </form>
 </div>
 {% endblock %}

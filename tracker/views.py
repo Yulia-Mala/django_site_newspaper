@@ -1,4 +1,3 @@
-from django.contrib.auth import get_user_model
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.db.models import Count
 from django.shortcuts import render
@@ -10,9 +9,7 @@ from .models import Topic, Newspaper, Redactor
 
 
 def index(request):
-    context = {
-
-    }
+    context = {}
     return render(request, "tracker/index.html", context=context)
 
 
@@ -27,7 +24,9 @@ class TopicListView(generic.ListView):
         return context
 
     def get_queryset(self):
-        queryset = Topic.objects.annotate(num_papers=Count("newspapers")).order_by("-num_papers")
+        queryset = Topic.objects.annotate(
+            num_papers=Count("newspapers")
+        ).order_by("-num_papers")
         name = self.request.GET.get("search_text")
         if name:
             return queryset.filter(name__icontains=name)
@@ -38,7 +37,7 @@ class TopicDetailView(generic.DetailView):
     model = Topic
 
 
-class RedactorListView( generic.ListView):
+class RedactorListView(generic.ListView):
     model = Redactor
 
     def get_context_data(self, *, object_list=None, **kwargs):
@@ -56,11 +55,11 @@ class RedactorListView( generic.ListView):
         return queryset
 
 
-class RedactorDetailView( generic.DetailView):
+class RedactorDetailView(generic.DetailView):
     model = Redactor
 
 
-class NewspaperListView( generic.ListView):
+class NewspaperListView(generic.ListView):
     model = Newspaper
     paginate_by = 6
 
@@ -79,7 +78,7 @@ class NewspaperListView( generic.ListView):
         return queryset
 
 
-class NewspaperDetailView( generic.DetailView):
+class NewspaperDetailView(generic.DetailView):
     model = Newspaper
 
 
@@ -139,5 +138,3 @@ class RedactorUpdateView(LoginRequiredMixin, generic.UpdateView):
 
     def get_success_url(self):
         return reverse("tracker:redactor-detail", kwargs={"pk": self.object.pk})
-
-

@@ -4,21 +4,20 @@
   <div class="mx-auto w-75 p-3">
     <h3>
       {{ redactor.username }}
+        <a class="btn-lg" href="{% url "tracker:redactor-update" pk=redactor.id%}">Update</a>
       {% if user == redactor %} (me)
       {% endif %}
     </h3>
-    <a class="btn-lg" href="{% url "tracker:redactor-update" pk=redactor.id%}">Update</a>
-
-    <p><h6>
+    <h6>
       {% if redactor.first_name and redactor.last_name %}
         real name: {{ redactor.first_name }} {{ redactor.last_name }}
       {% endif %}
-    </h6></p>
-      <p><h6>
+    </h6>
+    <h6>
       {% if redactor.years_of_experience %}
         years of experience: {{ redactor.years_of_experience }}
       {% endif %}
-    </h6></p>
+    </h6>
     <br>
     {% if redactor.newspapers.all %}
       <h6>Newspapers:</h6>

@@ -1,9 +1,23 @@
 from django.urls import path
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 
-from tracker.views import index, TopicListView, TopicDetailView, RedactorListView, RedactorDetailView, \
-    NewspaperListView, NewspaperDetailView, TopicCreateView, NewspaperCreateView, TopicUpdateView, NewspaperUpdateView, \
-    TopicDeleteView, NewspaperDeleteView, RedactorCreateView, RedactorUpdateView
+from tracker.views import (
+    index,
+    TopicListView,
+    TopicDetailView,
+    RedactorListView,
+    RedactorDetailView,
+    NewspaperListView,
+    NewspaperDetailView,
+    TopicCreateView,
+    NewspaperCreateView,
+    TopicUpdateView,
+    NewspaperUpdateView,
+    TopicDeleteView,
+    NewspaperDeleteView,
+    RedactorCreateView,
+    RedactorUpdateView
+)
 
 urlpatterns = [
     path("", index, name="index"),

@@ -14,7 +14,10 @@ class AnonymousPermDenied(TestCase):
             username="funny_ann",
             password="12345",
         )
-        address = reverse("tracker:redactor-update", kwargs={"pk": redactor.id})
+        address = reverse(
+            "tracker:redactor-update",
+            kwargs={"pk": redactor.id}
+        )
         request = self.client.get(address)
         self.assertNotEqual(request.status_code, "200")
 
@@ -44,5 +47,7 @@ class SearchTests(TestCase):
         address = reverse("tracker:newspaper-list")
         response = self.client.get(address, data={"search_text": "To"})
         newspapers = Newspaper.objects.filter(title__icontains="to")
-        self.assertEqual(list(newspapers), list(response.context["newspaper_list"]))
-
+        self.assertEqual(
+            list(newspapers),
+            list(response.context["newspaper_list"])
+        )
