@@ -21,6 +21,7 @@ class TopicListView(generic.ListView):
         search_text = self.request.GET.get("search_text", "")
         text = {"search_text": search_text}
         context["search_form"] = SearchForm(initial=text)
+        context["leaders"] = self.get_leaders()
         return context
 
     def get_queryset(self):
@@ -31,6 +32,15 @@ class TopicListView(generic.ListView):
         if name:
             return queryset.filter(name__icontains=name)
         return queryset
+
+    def get_leaders(self):
+        queryset = self.get_queryset()
+        topic_leader = {}
+        for topic in queryset:
+            redactors_list = list(Redactor.objects.filter(newspapers__topic=topic))
+            lead = max(redactors_list, key=redactors_list.count)
+            topic_leader[topic] = lead
+        return topic_leader
 
 
 class TopicDetailView(generic.DetailView):
@@ -45,6 +55,7 @@ class RedactorListView(generic.ListView):
         search_text = self.request.GET.get("search_text", "")
         text = {"search_text": search_text}
         context["search_form"] = SearchForm(initial=text)
+        context["favorites"] = self.get_favorites()
         return context
 
     def get_queryset(self):
@@ -53,6 +64,15 @@ class RedactorListView(generic.ListView):
         if username:
             return queryset.filter(username__icontains=username)
         return queryset
+
+    def get_favorites(self):
+        queryset = self.get_queryset()
+        favorite_topic = {}
+        for redactor in queryset:
+            topic_list = list(Topic.objects.filter(newspapers__publishers=redactor))
+            favorite = max(topic_list, key=topic_list.count)
+            favorite_topic[redactor] = favorite
+        return favorite_topic
 
 
 class RedactorDetailView(generic.DetailView):
