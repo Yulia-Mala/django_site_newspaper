@@ -47,3 +47,18 @@ class SearchForm(forms.Form):
                                   widget=forms.TextInput(attrs=text))
 
 
+class NewspaperFilterForm(forms.Form):
+    publishers = forms.ModelMultipleChoiceField(
+        queryset=get_user_model().objects.all(),
+        widget=forms.CheckboxSelectMultiple,
+        required=False,
+        label="Redactors"
+    )
+    topic = forms.ModelMultipleChoiceField(
+        queryset=Topic.objects.all(),
+        widget=forms.CheckboxSelectMultiple,
+        required=False,
+        label="Topics"
+    )
+
+

@@ -39,7 +39,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'tracker',
     "crispy_forms",
-    "crispy_bootstrap4"
+    "crispy_bootstrap4",
+    "django_filters",
 ]
 
 MIDDLEWARE = [

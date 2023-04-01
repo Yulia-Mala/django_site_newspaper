@@ -4,7 +4,7 @@ from django.shortcuts import render
 from django.urls import reverse_lazy, reverse
 from django.views import generic
 
-from .forms import RedactorForm, SearchForm, NewspaperForm
+from .forms import RedactorForm, SearchForm, NewspaperForm, NewspaperFilterForm
 from .models import Topic, Newspaper, Redactor
 
 
@@ -36,6 +36,7 @@ class TopicListView(generic.ListView):
     def get_leaders(self):
         queryset = self.get_queryset()
         topic_leader = {}
+        lead_id = {}
         for topic in queryset:
             redactors_list = list(Redactor.objects.filter(newspapers__topic=topic))
             lead = max(redactors_list, key=redactors_list.count)
@@ -88,13 +89,20 @@ class NewspaperListView(generic.ListView):
         search_text = self.request.GET.get("search_text", "")
         text = {"search_text": search_text}
         context["search_form"] = SearchForm(initial=text)
+        context["filter_form"] = NewspaperFilterForm()
         return context
 
     def get_queryset(self):
         queryset = Newspaper.objects.all()
         title = self.request.GET.get("search_text")
         if title:
-            return queryset.filter(title__icontains=title)
+            queryset = queryset.filter(title__icontains=title)
+        publishers = self.request.GET.get("publishers")
+        if publishers:
+            queryset = queryset.filter(publishers__in=publishers)
+        topic = self.request.GET.get("topic")
+        if topic:
+            queryset = queryset.filter(topic__in=topic)
         return queryset
 
 

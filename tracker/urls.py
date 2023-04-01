@@ -16,7 +16,7 @@ from tracker.views import (
     TopicDeleteView,
     NewspaperDeleteView,
     RedactorCreateView,
-    RedactorUpdateView
+    RedactorUpdateView,
 )
 
 urlpatterns = [
@@ -91,6 +91,11 @@ urlpatterns = [
         RedactorUpdateView.as_view(),
         name="redactor-update"
     ),
+    # path(
+    #     "papers/filter",
+    #     PaperFilteredList.as_view(),
+    #     name="papers-filter"
+    # ),
 ]
 
 urlpatterns += staticfiles_urlpatterns()
