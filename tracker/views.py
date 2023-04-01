@@ -36,7 +36,6 @@ class TopicListView(generic.ListView):
     def get_leaders(self):
         queryset = self.get_queryset()
         topic_leader = {}
-        lead_id = {}
         for topic in queryset:
             redactors_list = list(Redactor.objects.filter(newspapers__topic=topic))
             lead = max(redactors_list, key=redactors_list.count)
