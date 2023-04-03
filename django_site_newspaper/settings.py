@@ -96,7 +96,7 @@ DATABASES = {
     'PASSWORD': 'YQsFZaDjBM97',
     'HOST': 'ep-broad-king-710956.eu-central-1.aws.neon.tech',
     'PORT': '5432',
-    'OPTIONS': {'sslmode': 'verify-full'},
+    'OPTIONS': {'sslmode': 'require'},
   }
 }
 
