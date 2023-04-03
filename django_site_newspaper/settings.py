@@ -93,9 +93,10 @@ DATABASES = {
     'ENGINE': 'django.db.backends.postgresql',
     'NAME': 'neondb',
     'USER': 'Yulia-Mala',
-    'PASSWORD': 'V3pzlHWD2oiO',
-    'HOST': 'ep-sweet-field-250504.eu-central-1.aws.neon.tech',
+    'PASSWORD': 'YQsFZaDjBM97',
+    'HOST': 'eu-central-1.aws.neon.tech',
     'PORT': '5432',
+    'OPTIONS': {'sslmode': 'require'},
   }
 }
 
