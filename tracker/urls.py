@@ -52,7 +52,7 @@ urlpatterns = [
          name="newspaper-detail"
      ),
     path(
-         "topics/create",
+         "topics/create/",
          TopicCreateView.as_view(),
          name="topic-create"
      ),

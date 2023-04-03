@@ -27,7 +27,7 @@ SECRET_KEY = os.environ.get("DJANGO_SECRET_KEY", "django-insecure-wz^(na0w&&r(v1
 # SECURITY WARNING: don't run with debug turned on in production!
 # DEBUG = os.environ.get("DJANGO_DEBUG", "") != "False"
 
-DEBUG = False
+DEBUG = True
 
 
 ALLOWED_HOSTS = [
@@ -165,10 +165,10 @@ STATICFILES_DIRS = [
 
 STATIC_ROOT = "staticfiles/"
 
-SECURE_SSL_REDIRECT = True
-
-SESSION_COOKIE_SECURE = True
-
-CSRF_COOKIE_SECURE = True
-
-CONN_MAX_AGE = 0
+# SECURE_SSL_REDIRECT = True
+#
+# SESSION_COOKIE_SECURE = True
+#
+# CSRF_COOKIE_SECURE = True
+#
+# CONN_MAX_AGE = 0

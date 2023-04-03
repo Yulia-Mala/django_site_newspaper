@@ -38,7 +38,7 @@ class TopicListView(generic.ListView):
         topic_leader = {}
         for topic in queryset:
             redactors_list = list(Redactor.objects.filter(newspapers__topic=topic))
-            lead = max(redactors_list, key=redactors_list.count)
+            lead = max(redactors_list, key=redactors_list.count) if redactors_list else "-"
             topic_leader[topic] = lead
         return topic_leader
 
@@ -70,7 +70,7 @@ class RedactorListView(generic.ListView):
         favorite_topic = {}
         for redactor in queryset:
             topic_list = list(Topic.objects.filter(newspapers__publishers=redactor))
-            favorite = max(topic_list, key=topic_list.count)
+            favorite = max(topic_list, key=topic_list.count) if topic_list else "-"
             favorite_topic[redactor] = favorite
         return favorite_topic
 
