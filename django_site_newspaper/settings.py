@@ -94,7 +94,7 @@ DATABASES = {
     'NAME': 'neondb',
     'USER': 'Yulia-Mala',
     'PASSWORD': 'project=ep-broad-king-710956;YQsFZaDjBM97',
-    'HOST': 'ep-broad-king-710956.eu-central-1.aws.neon.tech',
+    'HOST': 'ep-sweet-field-250504.eu-central-1.aws.neon.tech',
     'PORT': '5432',
     'OPTIONS': {'sslmode': 'require'},
   }
