@@ -30,7 +30,10 @@ SECRET_KEY = os.environ.get("DJANGO_SECRET_KEY", "django-insecure-wz^(na0w&&r(v1
 DEBUG = False
 
 
-ALLOWED_HOSTS = ["127.0.0.1"]
+ALLOWED_HOSTS = [
+    "127.0.0.1",
+    "https://django-newspaper.herokuapp.com"
+]
 
 
 # Application definition
