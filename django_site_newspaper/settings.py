@@ -94,7 +94,7 @@ DATABASES = {
     'NAME': 'neondb',
     'USER': 'Yulia-Mala',
     'PASSWORD': 'YQsFZaDjBM97',
-    'HOST': 'Newspaper_website.eu-central-1.aws.neon.tech',
+    'HOST': '250504.eu-central-1.aws.neon.tech',
     'PORT': '5432',
     'OPTIONS': {'sslmode': 'require'},
   }
