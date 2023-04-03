@@ -88,26 +88,26 @@ WSGI_APPLICATION = 'django_site_newspaper.wsgi.application'
 # To use Neon with Django, you have to create a Project on Neon and specify
 # the project connection settings in your settings.py in the same way as for standalone Postgres.
 
-# DATABASES = {
-#   'default': {
-#     'ENGINE': 'django.db.backends.postgresql',
-#     'NAME': 'neondb',
-#     'USER': 'Yulia-Mala',
-#     'PASSWORD': 'V3pzlHWD2oiO',
-#     'HOST': 'ep-sweet-field-250504.eu-central-1.aws.neon.tech',
-#     'PORT': '5432',
-#   }
-# }
-
 DATABASES = {
-    "default": {
-        "ENGINE": "django.db.backends.sqlite3",
-        "NAME": BASE_DIR / "db.sqlite3",
-    }
+  'default': {
+    'ENGINE': 'django.db.backends.postgresql',
+    'NAME': 'neondb',
+    'USER': 'Yulia-Mala',
+    'PASSWORD': 'V3pzlHWD2oiO',
+    'HOST': 'ep-sweet-field-250504.eu-central-1.aws.neon.tech',
+    'PORT': '5432',
+  }
 }
 
-db_from_env = dj_database_url.config(conn_max_age=500)
-DATABASES["default"].update(db_from_env)
+# DATABASES = {
+#     "default": {
+#         "ENGINE": "django.db.backends.sqlite3",
+#         "NAME": BASE_DIR / "db.sqlite3",
+#     }
+# }
+#
+# db_from_env = dj_database_url.config(conn_max_age=500)
+# DATABASES["default"].update(db_from_env)
 
 
 
