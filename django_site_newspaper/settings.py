@@ -94,11 +94,12 @@ DATABASES = {
     'NAME': 'neondb',
     'USER': 'Yulia-Mala',
     'PASSWORD': 'YQsFZaDjBM97',
-    'HOST': '710956.eu-central-1.aws.neon.tech',
+    'HOST': 'ep-broad-king-710956.eu-central-1.aws.neon.tech',
     'PORT': '5432',
-    'OPTIONS': {'sslmode': 'require'},
+    'OPTIONS': {'sslmode': 'verify-full'},
   }
 }
+
 
 # DATABASES = {
 #     "default": {
