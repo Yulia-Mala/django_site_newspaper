@@ -1,6 +1,8 @@
-Admin site for newspaper. Manage your papers, topics, redactors easy.
+Admin site for newspaper. Manage your papers, topics, redactors easy. 
+Use text search and filtering among newspapers for easy search! 
 
 Check it out!
+https://django-newspaper.herokuapp.com/
 
 You can make read-only operations without login. 
 If you want to test create, update, delete operations use credentials:
