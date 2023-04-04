@@ -1,4 +1,4 @@
-Admin site for newspaper. **Manage your papers, topics, redactors easy.**
+Admin site for the newspaper. **Manage your papers, topics, redactors easy.**
 Use text search and filtering among newspapers for easy search! 
 
 Check it out!
