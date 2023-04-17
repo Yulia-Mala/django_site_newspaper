@@ -1,15 +1,28 @@
-Admin site for the newspaper. **Manage your papers, topics, redactors easy.**
-Use text search and filtering among newspapers for easy search! 
+## Newspaper admin website
 
-Check it out!
+Admin site for the newspaper. **It allow to manage papers, topics, redactors easy.**
+
+### Site functionality:
+- Authentication & permissios (admin or read-only)
+- Create / update / delete for all the content types
+- Ability to link redactors, topics, papers for saving info, statistics
+- Search papers by title
+- Filter papers by topics, redactors
+
+### Check it out!
 **https://django-newspaper.herokuapp.com/**
 
 You can make read-only operations without login. 
-If you want to test create, update, delete operations use credentials:
 
-**login: klara_werther**
+If you want to test CRUD operations use credentials:
 
-**password: ThreeBody.com**
+**login:** klara_werther
+
+**password:** ThreeBody.com
+
+### Installation 
 
 use requirements.txt for setup if you want to fork / clone the repo.)
+
+
 <img width="1266" alt="Monosnap Cosmic Kyiv Post 2023-04-04 03-10-37" src="https://user-images.githubusercontent.com/121285272/229653701-c51cfd0a-035a-477e-86d1-912488bb5af6.png">
