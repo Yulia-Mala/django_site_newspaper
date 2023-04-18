@@ -23,10 +23,11 @@ class Newspaper(models.Model):
     title = models.CharField(max_length=63, unique=True)
     content = models.TextField()
     publish_date = models.DateField(null=True, blank=True)
-    topic = models.ManyToManyField(Topic, related_name="newspapers")
+    topic = models.ManyToManyField(Topic, related_name="newspapers", blank=True)
     publishers = models.ManyToManyField(
         AUTH_USER_MODEL,
-        related_name="newspapers"
+        related_name="newspapers",
+        blank=True
     )
 
     class Meta:

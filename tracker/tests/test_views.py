@@ -2,6 +2,7 @@ from django.contrib.auth import get_user_model
 from django.test import TestCase, Client
 from django.urls import reverse
 
+from tracker.forms import NewspaperForm
 from tracker.models import Newspaper
 
 
@@ -51,3 +52,22 @@ class SearchTests(TestCase):
             list(newspapers),
             list(response.context["newspaper_list"])
         )
+
+
+class CrudWorks(TestCase):
+    def test_update(self):
+        self.client = Client()
+        test_user = get_user_model().objects.create_user(
+            username="test", password="test"
+        )
+        paper = Newspaper.objects.create(
+            title="Giordano Bruno",
+            content="The Burning Man we deserve"
+        )
+        self.client.force_login(test_user)
+        address = reverse("tracker:newspaper-update", args=[paper.id])
+        self.client.post(
+            address, {"content": "The Burning Man we actually deserve"}
+        )
+        paper.refresh_from_db()
+        self.assertEqual(paper.content, "The Burning Man we actually deserve")

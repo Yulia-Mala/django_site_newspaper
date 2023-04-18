@@ -10,6 +10,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.1/ref/settings/
 """
 import os
+import sys
 from pathlib import Path
 import dj_database_url
 
@@ -100,12 +101,13 @@ DATABASES = {
   }
 }
 
-# DATABASES = {
-#     "default": {
-#         "ENGINE": "django.db.backends.sqlite3",
-#         "NAME": BASE_DIR / "db.sqlite3",
-#     }
-# }
+if 'test' in sys.argv or 'test_coverage' in sys.argv:
+    DATABASES = {
+        "default": {
+            "ENGINE": "django.db.backends.sqlite3",
+            "NAME": BASE_DIR / "db.sqlite3",
+        }
+    }
 #
 # db_from_env = dj_database_url.config(conn_max_age=500)
 # DATABASES["default"].update(db_from_env)
@@ -164,11 +166,3 @@ STATICFILES_DIRS = [
 ]
 
 STATIC_ROOT = "staticfiles/"
-
-# SECURE_SSL_REDIRECT = True
-#
-# SESSION_COOKIE_SECURE = True
-#
-# CSRF_COOKIE_SECURE = True
-#
-# CONN_MAX_AGE = 0

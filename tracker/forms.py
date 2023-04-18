@@ -32,7 +32,8 @@ class NewspaperForm(forms.ModelForm):
         required=False,
     )
     text = {"placeholder": "YYYY-MM-DD"}
-    publish_date = forms.DateField(widget=forms.TextInput(attrs=text))
+    publish_date = forms.DateField(widget=forms.TextInput(attrs=text), required=False)
+    title = forms.CharField(widget=forms.Textarea, required=False)
 
     class Meta:
         model = Newspaper
@@ -60,5 +61,3 @@ class NewspaperFilterForm(forms.Form):
         required=False,
         label="Topics"
     )
-
-
