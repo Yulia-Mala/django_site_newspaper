@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% load crispy_forms_filters %}
+{% load dict_getter %}
+{% block content %}
+    <div class="mx-auto w-75 p-3">
+      <form action="" method="get">
+        {{ search_form|crispy }}
+      </form>
+      <div class="container d-flex justify-content-end">
+  <h3><a class="btn-lg" href="{% url "tracker:redactor-create" %}">Add redactor</a></h3>
+  </div>
+      <table class="table ">
+        <tr class="thead-light">
+          <th>ID</th>
+          <th>Username</th>
+          <th>Real name</th>
+          <th>Papers</th>
+          <th>Favorite topic</th>
+        </tr>
+      {% for redactor in redactor_list %}
+        <tr>
+          <td>{{ redactor.id }}</td>
+          <td><h5>
+            <a href="{% url "tracker:redactor-detail" pk=redactor.id %}">
+            {{ redactor.username }}
+            {% if user == redactor %} (me)
+            {% endif %}
+            </a>
+          </h5></td>
+          <td> {% if redactor.first_name and redactor.last_name %}
+            {{ redactor.first_name }} {{ redactor.last_name }}
+            {% endif %} </td>
+          <td>{{ redactor.newspapers.count }}</td>
+          <td>{{favorites|dict_getter:redactor}}</td>
+        </tr>
+      {% endfor %}
+      </table>
+    </div>
+{% endblock %}
