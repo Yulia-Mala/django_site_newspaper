@@ -9,16 +9,6 @@ Admin site for the newspaper. **It allow to manage papers, topics, redactors eas
 - Search papers by title
 - Filter papers by topics, redactors
 
-### Check it out!
-**https://django-newspaper.herokuapp.com/**
-
-You can make read-only operations without login. 
-
-If you want to test CRUD operations use credentials:
-
-**login:** klara_werther
-
-**password:** ThreeBody.com
 
 ### Installation 
 
